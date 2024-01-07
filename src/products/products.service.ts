@@ -122,6 +122,7 @@ export class ProductsService {
   async remove(id: string) {
     const { affected }  = await this.productRepository.delete({id: id});
     if(affected===0) throw new NotFoundException(`Product with id '${id}' not found`);
+    return {success: 'Deleted'}
   }
 
   private handleDBExeptions(error: any) {
